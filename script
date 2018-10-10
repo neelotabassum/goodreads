@@ -1,0 +1,40 @@
+/***** HTML Widget to add a Goodreads button that goes to the title in Goodreads *********/
+/** Type: Standard																		**/
+/** Code: GOODREADS																		**/
+/** Name: Goodreads Button																**/
+/** Description: Adds a Goodreads Button to the Results, Detail and My List displays.	**/
+/** Search Fields: ISBN																	**/
+/** Localized Strings: NONE																**/
+/*****************************************************************************************/
+
+/***** HTML Content *****/
+
+
+<script type="text/javascript">
+addGoodReads("$RESULT_ID");
+</script>
+
+function addGoodReads (rId) {
+
+var thisISBN = jQuery('#'+rId+'_ISBN .ISBN_value:first-child').text();
+var goodReadsButton = '<button id="'+rId+'GOODREADS_BUTTON" class="button goodreadsbutton" title="goodreads" value="goodreads" onclick="window.open(\'https://www.goodreads.com/book/isbn/'+thisISBN+'\');">goodreads</button>';
+
+if(document.getElementById('detailActions'+rId) != undefined){
+jQuery('#detailActions'+rId).prepend(goodReadsButton);
+}
+else
+{
+var displayType='hitlist';
+var hitnum=rId.split(displayType)[1];
+jQuery('#results_bio'+hitnum).closest('.results_cell').find('.results_right').prepend(goodReadsButton);
+}
+
+jQuery('.goodreadsbutton').css('background-image', 'url(https://www.goodreads.com/images/atmb_add_book-70x25.png)');
+jQuery('.goodreadsbutton').css('background-repeat', 'no-repeat');
+jQuery('.goodreadsbutton').css('width', '70px');
+jQuery('.goodreadsbutton').css('height', '25px');
+jQuery('.goodreadsbutton').css('background-color', 'none');
+jQuery('.goodreadsbutton').css('border', 'none');
+jQuery('.goodreadsbutton').text('');
+
+}
