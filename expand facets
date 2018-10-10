@@ -1,0 +1,25 @@
+/****** HTML Widget for Results Display to expand the Library facet ******/
+/** Expands the Library facet to show all entries automatically 		**/
+/** Type: Script Only													**/
+/** Code: EXPAND_LIBRARY_FACET											**/
+/** Name: Expand Library Facet											**/
+/** Description: Results Display Only. Expands the Library Facet		**/
+/**              automatically.											**/
+/** Search Fields: NONE													**/
+/** Localized Strings: NONE												**/
+/*************************************************************************/
+
+/***** Bound JavaScript function *****/
+
+expandLibraryFacet
+
+/***** Custom JavaScript *****/
+
+function expandLibraryFacet () {
+jQuery('#facetFormLIBRARY .hidden').each(function(){
+  jQuery(this).removeClass('hidden');
+  jQuery(this).addClass('shown');
+});
+jQuery('#facetFormLIBRARY').find('.moreNavigators').css('display', 'none');
+jQuery('#facetFormLIBRARY').find('.fewerNavigators').css('display', 'none');
+}
